@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { MessageCircle, Phone, BookOpen, Brain, Moon, Target, Calendar, TrendingUp, User, Settings, LogOut, CreditCard, Trophy, Bookmark } from 'lucide-react';
+import { MessageCircle, Phone, BookOpen, Brain, Moon, Target, Calendar, TrendingUp, User, Settings, LogOut, CreditCard, Trophy, Bookmark, Sparkles, Star, Crown } from 'lucide-react';
 import MoodTracker from '@/components/MoodTracker';
 import Achievements from '@/components/Achievements';
 import Goals from '@/components/Goals';
@@ -25,37 +25,43 @@ const Dashboard = () => {
       title: "AI Chat",
       icon: MessageCircle,
       href: "/ai-chat",
-      color: "bg-gradient-to-br from-blue-500 to-blue-600"
+      color: "from-blue-500 to-blue-600",
+      shadowColor: "shadow-blue-500/25"
     },
     {
       title: "AI Call",
       icon: Phone,
       href: "/ai-call",
-      color: "bg-gradient-to-br from-green-500 to-green-600"
+      color: "from-green-500 to-green-600",
+      shadowColor: "shadow-green-500/25"
     },
     {
       title: "Exercises",
       icon: Target,
       href: "/exercises",
-      color: "bg-gradient-to-br from-purple-500 to-purple-600"
+      color: "from-purple-500 to-purple-600",
+      shadowColor: "shadow-purple-500/25"
     },
     {
       title: "Brain Training",
       icon: Brain,
       href: "/brain-training",
-      color: "bg-gradient-to-br from-orange-500 to-orange-600"
+      color: "from-orange-500 to-orange-600",
+      shadowColor: "shadow-orange-500/25"
     },
     {
       title: "Sleep Stories",
       icon: Moon,
       href: "/sleep-stories",
-      color: "bg-gradient-to-br from-indigo-500 to-indigo-600"
+      color: "from-indigo-500 to-indigo-600",
+      shadowColor: "shadow-indigo-500/25"
     },
     {
       title: "Audiobooks",
       icon: BookOpen,
       href: "/audiobooks",
-      color: "bg-gradient-to-br from-red-500 to-red-600"
+      color: "from-red-500 to-red-600",
+      shadowColor: "shadow-red-500/25"
     }
   ];
 
@@ -71,39 +77,49 @@ const Dashboard = () => {
         }}
       >
         {/* Enhanced blurred overlay with gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-purple-900/40 to-indigo-900/30 backdrop-blur-md"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-purple-900/50 to-indigo-900/40 backdrop-blur-md"></div>
         
         <div className="relative z-10">
-          {/* Header with enhanced contrast */}
-          <header className="bg-white/95 backdrop-blur-lg border-b border-white/20 shadow-xl">
+          {/* Enhanced Header */}
+          <header className="bg-gradient-to-r from-white/95 via-blue-50/95 to-purple-50/95 backdrop-blur-lg border-b border-white/30 shadow-2xl">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex justify-between items-center h-16">
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent drop-shadow-sm">
-                  Good morning, Sarah! ✨
-                </h1>
+              <div className="flex justify-between items-center h-20">
                 <div className="flex items-center space-x-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+                      <Sparkles className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent drop-shadow-sm">
+                        Good morning, Sarah! ✨
+                      </h1>
+                      <p className="text-sm text-gray-600 font-medium">Ready to continue your wellness journey?</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3">
                   <Link to="/programs">
-                    <Button variant="outline" size="sm" className="bg-white/90 text-gray-900 border-gray-300 hover:bg-white shadow-md hover:scale-105 transition-all duration-300">
+                    <Button variant="outline" size="sm" className="bg-white/90 text-gray-900 border-gray-300 hover:bg-white shadow-lg hover:scale-105 transition-all duration-300 font-semibold">
                       <Bookmark className="w-4 h-4 mr-2" />
                       Programs
                     </Button>
                   </Link>
                   <Link to="/profile">
-                    <Button variant="outline" size="sm" className="bg-white/90 text-gray-900 border-gray-300 hover:bg-white shadow-md hover:scale-105 transition-all duration-300">
+                    <Button variant="outline" size="sm" className="bg-white/90 text-gray-900 border-gray-300 hover:bg-white shadow-lg hover:scale-105 transition-all duration-300 font-semibold">
                       <User className="w-4 h-4 mr-2" />
                       Profile
                     </Button>
                   </Link>
                   <Link to="/manage-payments">
-                    <Button variant="outline" size="sm" className="bg-white/90 text-gray-900 border-gray-300 hover:bg-white shadow-md hover:scale-105 transition-all duration-300">
+                    <Button variant="outline" size="sm" className="bg-white/90 text-gray-900 border-gray-300 hover:bg-white shadow-lg hover:scale-105 transition-all duration-300 font-semibold">
                       <CreditCard className="w-4 h-4 mr-2" />
                       Billing
                     </Button>
                   </Link>
-                  <Button variant="outline" size="sm" className="bg-white/90 text-gray-900 border-gray-300 hover:bg-white shadow-md hover:scale-105 transition-all duration-300">
+                  <Button variant="outline" size="sm" className="bg-white/90 text-gray-900 border-gray-300 hover:bg-white shadow-lg hover:scale-105 transition-all duration-300">
                     <Settings className="w-4 h-4" />
                   </Button>
-                  <Button variant="destructive" size="sm" onClick={handleSignOut} className="bg-red-600 hover:bg-red-700 shadow-md hover:scale-105 transition-all duration-300">
+                  <Button variant="destructive" size="sm" onClick={handleSignOut} className="bg-red-600 hover:bg-red-700 shadow-lg hover:scale-105 transition-all duration-300 font-semibold">
                     <LogOut className="w-4 h-4 mr-2" />
                     Sign Out
                   </Button>
@@ -113,68 +129,87 @@ const Dashboard = () => {
           </header>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            {/* Stats Overview with enhanced contrast */}
+            {/* Enhanced Stats Overview */}
             <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <Card className="bg-white/95 backdrop-blur-lg shadow-2xl border-0 ring-1 ring-white/20 hover:scale-105 transition-all duration-300">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-gray-900">Today's Progress</CardTitle>
-                  <div className="p-2 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full">
-                    <Calendar className="h-4 w-4 text-white" />
+              <Card className="bg-gradient-to-br from-white/95 to-green-50/95 backdrop-blur-lg shadow-2xl border-0 ring-2 ring-white/30 hover:scale-105 transition-all duration-300 overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-green-200/30 to-emerald-200/30 rounded-full -translate-y-10 translate-x-10"></div>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3 relative z-10">
+                  <CardTitle className="text-sm font-bold text-gray-900">Today's Progress</CardTitle>
+                  <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full shadow-lg">
+                    <Calendar className="h-5 w-5 text-white" />
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold text-gray-900">{todayProgress}%</div>
-                  <Progress value={todayProgress} className="mt-2 h-2" />
-                  <p className="text-xs text-gray-700 mt-2 font-medium">3 of 5 activities completed</p>
+                <CardContent className="relative z-10">
+                  <div className="text-3xl font-bold text-gray-900 mb-2">{todayProgress}%</div>
+                  <div className="relative mb-3">
+                    <Progress value={todayProgress} className="h-3 bg-gray-200" />
+                    <div 
+                      className="absolute top-0 left-0 h-3 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 transition-all duration-500 shadow-md"
+                      style={{ width: `${todayProgress}%` }}
+                    ></div>
+                  </div>
+                  <p className="text-sm text-gray-700 font-medium">3 of 5 activities completed</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-white/95 backdrop-blur-lg shadow-2xl border-0 ring-1 ring-white/20 hover:scale-105 transition-all duration-300">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-gray-900">Weekly Streak</CardTitle>
-                  <div className="p-2 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full">
-                    <TrendingUp className="h-4 w-4 text-white" />
+              <Card className="bg-gradient-to-br from-white/95 to-blue-50/95 backdrop-blur-lg shadow-2xl border-0 ring-2 ring-white/30 hover:scale-105 transition-all duration-300 overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-200/30 to-indigo-200/30 rounded-full -translate-y-10 translate-x-10"></div>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3 relative z-10">
+                  <CardTitle className="text-sm font-bold text-gray-900">Weekly Streak</CardTitle>
+                  <div className="p-3 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full shadow-lg">
+                    <TrendingUp className="h-5 w-5 text-white" />
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold text-gray-900">{weeklyStreak} days</div>
-                  <p className="text-xs text-gray-700 mt-2 font-medium">Keep up the great work!</p>
+                <CardContent className="relative z-10">
+                  <div className="text-3xl font-bold text-gray-900 mb-2">{weeklyStreak} days</div>
+                  <div className="flex items-center space-x-1 mb-2">
+                    {[...Array(7)].map((_, i) => (
+                      <div key={i} className={`w-3 h-3 rounded-full ${i < weeklyStreak ? 'bg-blue-500' : 'bg-gray-300'}`}></div>
+                    ))}
+                  </div>
+                  <p className="text-sm text-gray-700 font-medium">Keep up the great work!</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-white/95 backdrop-blur-lg shadow-2xl border-0 ring-1 ring-white/20 hover:scale-105 transition-all duration-300">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-gray-900">Current Mood</CardTitle>
-                  <div className="p-2 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full">
-                    <Target className="h-4 w-4 text-white" />
+              <Card className="bg-gradient-to-br from-white/95 to-purple-50/95 backdrop-blur-lg shadow-2xl border-0 ring-2 ring-white/30 hover:scale-105 transition-all duration-300 overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-purple-200/30 to-pink-200/30 rounded-full -translate-y-10 translate-x-10"></div>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3 relative z-10">
+                  <CardTitle className="text-sm font-bold text-gray-900">Current Mood</CardTitle>
+                  <div className="p-3 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full shadow-lg">
+                    <Target className="h-5 w-5 text-white" />
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold text-gray-900">{currentMood}</div>
-                  <p className="text-xs text-gray-700 mt-2 font-medium">Logged 2 hours ago</p>
+                <CardContent className="relative z-10">
+                  <div className="text-3xl font-bold text-gray-900 mb-2">{currentMood}</div>
+                  <div className="flex items-center space-x-2 mb-2">
+                    <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                    <span className="text-sm text-gray-700 font-medium">Feeling positive</span>
+                  </div>
+                  <p className="text-sm text-gray-700 font-medium">Logged 2 hours ago</p>
                 </CardContent>
               </Card>
             </div>
 
-            {/* Quick Actions with enhanced styling */}
-            <Card className="mb-8 bg-white/95 backdrop-blur-lg shadow-2xl border-0 ring-1 ring-white/20">
-              <CardHeader>
-                <CardTitle className="text-gray-900 text-xl font-bold flex items-center space-x-2">
-                  <div className="p-2 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full">
-                    <Trophy className="w-5 h-5 text-white" />
+            {/* Enhanced Quick Actions */}
+            <Card className="mb-8 bg-gradient-to-br from-white/95 to-indigo-50/95 backdrop-blur-lg shadow-2xl border-0 ring-2 ring-white/30 overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-200/20 to-purple-200/20 rounded-full -translate-y-16 translate-x-16"></div>
+              <CardHeader className="relative z-10">
+                <CardTitle className="text-gray-900 text-2xl font-bold flex items-center space-x-3">
+                  <div className="p-3 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full shadow-lg">
+                    <Crown className="w-6 h-6 text-white" />
                   </div>
                   <span>Quick Actions</span>
                 </CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="relative z-10">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                   {quickActions.map((action, index) => (
                     <Link key={index} to={action.href}>
-                      <div className="flex flex-col items-center p-4 rounded-xl hover:bg-white/80 transition-all duration-300 backdrop-blur-sm border border-white/20 hover:shadow-lg group">
-                        <div className={`w-12 h-12 ${action.color} rounded-full flex items-center justify-center mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                          <action.icon className="w-6 h-6 text-white" />
+                      <div className="flex flex-col items-center p-6 rounded-2xl hover:bg-white/80 transition-all duration-300 backdrop-blur-sm border-2 border-white/30 hover:shadow-xl group hover:scale-105">
+                        <div className={`w-14 h-14 bg-gradient-to-br ${action.color} rounded-full flex items-center justify-center mb-3 shadow-xl ${action.shadowColor} group-hover:scale-110 transition-transform duration-300`}>
+                          <action.icon className="w-7 h-7 text-white" />
                         </div>
-                        <span className="text-sm font-medium text-center text-gray-900 drop-shadow-sm">{action.title}</span>
+                        <span className="text-sm font-bold text-center text-gray-900 drop-shadow-sm">{action.title}</span>
                       </div>
                     </Link>
                   ))}
@@ -197,42 +232,43 @@ const Dashboard = () => {
               <Achievements />
             </div>
 
-            {/* Today's Recommendations with enhanced styling */}
-            <Card className="bg-white/95 backdrop-blur-lg shadow-2xl border-0 ring-1 ring-white/20 animate-scale-in">
-              <CardHeader>
-                <CardTitle className="text-gray-900 font-bold text-2xl flex items-center space-x-2">
-                  <div className="p-2 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full">
-                    <Target className="w-5 h-5 text-white" />
+            {/* Enhanced Today's Recommendations */}
+            <Card className="bg-gradient-to-br from-white/95 to-green-50/95 backdrop-blur-lg shadow-2xl border-0 ring-2 ring-white/30 animate-scale-in overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-200/20 to-emerald-200/20 rounded-full -translate-y-16 translate-x-16"></div>
+              <CardHeader className="relative z-10">
+                <CardTitle className="text-gray-900 font-bold text-2xl flex items-center space-x-3">
+                  <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full shadow-lg">
+                    <Target className="w-6 h-6 text-white" />
                   </div>
                   <span>Recommended for You Today</span>
                 </CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="relative z-10">
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-green-50/90 to-blue-50/90 backdrop-blur-sm border border-white/30 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                  <div className="flex items-center justify-between p-6 rounded-2xl bg-gradient-to-r from-green-50/90 to-blue-50/90 backdrop-blur-sm border-2 border-green-200/50 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
                     <div>
-                      <h3 className="text-gray-900 font-bold">Morning Breathing Exercise</h3>
-                      <p className="text-sm text-gray-700">5 minutes • Reduce anxiety</p>
+                      <h3 className="text-gray-900 font-bold text-lg">Morning Breathing Exercise</h3>
+                      <p className="text-sm text-gray-700 font-medium">5 minutes • Reduce anxiety</p>
                     </div>
-                    <Button size="sm" className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white shadow-md hover:scale-105 transition-all duration-300">
+                    <Button size="sm" className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white shadow-lg hover:scale-105 transition-all duration-300 font-semibold px-6">
                       Start
                     </Button>
                   </div>
-                  <div className="flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-purple-50/90 to-pink-50/90 backdrop-blur-sm border border-white/30 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                  <div className="flex items-center justify-between p-6 rounded-2xl bg-gradient-to-r from-purple-50/90 to-pink-50/90 backdrop-blur-sm border-2 border-purple-200/50 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
                     <div>
-                      <h3 className="text-gray-900 font-semibold">Mindful Check-in</h3>
-                      <p className="text-sm text-gray-700">10 minutes • Emotional awareness</p>
+                      <h3 className="text-gray-900 font-bold text-lg">Mindful Check-in</h3>
+                      <p className="text-sm text-gray-700 font-medium">10 minutes • Emotional awareness</p>
                     </div>
-                    <Button size="sm" className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white shadow-md hover:scale-105 transition-all duration-300">
+                    <Button size="sm" className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white shadow-lg hover:scale-105 transition-all duration-300 font-semibold px-6">
                       Start
                     </Button>
                   </div>
-                  <div className="flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-indigo-50/90 to-blue-50/90 backdrop-blur-sm border border-white/30 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                  <div className="flex items-center justify-between p-6 rounded-2xl bg-gradient-to-r from-indigo-50/90 to-blue-50/90 backdrop-blur-sm border-2 border-indigo-200/50 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
                     <div>
-                      <h3 className="text-gray-900 font-bold">Sleep Meditation</h3>
-                      <p className="text-sm text-gray-700">15 minutes • Better sleep</p>
+                      <h3 className="text-gray-900 font-bold text-lg">Sleep Meditation</h3>
+                      <p className="text-sm text-gray-700 font-medium">15 minutes • Better sleep</p>
                     </div>
-                    <Button size="sm" className="bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-600 hover:to-blue-700 text-white shadow-md hover:scale-105 transition-all duration-300">
+                    <Button size="sm" className="bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-600 hover:to-blue-700 text-white shadow-lg hover:scale-105 transition-all duration-300 font-semibold px-6">
                       Start
                     </Button>
                   </div>
