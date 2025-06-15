@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { User, Settings, Target, Calendar, Star, Trophy, Zap, Heart, Brain, Moon, ArrowLeft, Sparkles, Crown, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { toast } from 'sonner';
 
 const Profile = () => {
   const [profile, setProfile] = useState({
@@ -36,8 +37,12 @@ const Profile = () => {
   ];
 
   const handleSave = () => {
+    // Save profile logic here
     console.log('Profile saved:', profile);
-    // Add toast notification here
+    toast.success('Profile updated successfully!', {
+      description: 'Your changes have been saved.',
+      duration: 3000,
+    });
   };
 
   const stats = [
@@ -120,7 +125,14 @@ const Profile = () => {
                     <div>
                       <Label className="text-sm font-bold text-gray-700">Current Program</Label>
                       <p className="text-lg font-bold text-indigo-600">Stress & Anxiety Management</p>
-                      <Progress value={65} className="mt-2 h-2" />
+                      <div className="relative mt-2">
+                        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full transition-all duration-500 shadow-sm"
+                            style={{ width: '65%' }}
+                          ></div>
+                        </div>
+                      </div>
                       <p className="text-xs text-gray-600 mt-1">65% Complete</p>
                     </div>
                     <div>
@@ -278,7 +290,7 @@ const Profile = () => {
                 </CardContent>
               </Card>
 
-              {/* Save Button */}
+              {/* Enhanced Save Button */}
               <div className="flex justify-end">
                 <Button 
                   onClick={handleSave} 

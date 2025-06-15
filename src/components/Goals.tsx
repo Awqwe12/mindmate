@@ -159,8 +159,13 @@ const Goals = () => {
               {completedGoals}/{totalGoals} completed
             </span>
           </div>
-          <div className="flex-1 max-w-32">
-            <Progress value={completionRate} className="h-2" />
+          <div className="flex-1 max-w-32 relative">
+            <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-gradient-to-r from-green-500 to-emerald-600 rounded-full transition-all duration-500 shadow-sm"
+                style={{ width: `${completionRate}%` }}
+              ></div>
+            </div>
           </div>
           <span className="text-sm font-medium text-gray-600">
             {Math.round(completionRate)}%
@@ -283,10 +288,14 @@ const Goals = () => {
                         <span className="font-medium">Progress</span>
                         <span className="font-medium">{goal.progress}/{goal.total}</span>
                       </div>
-                      <Progress 
-                        value={(goal.progress / goal.total) * 100} 
-                        className="h-2"
-                      />
+                      <div className="relative">
+                        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full transition-all duration-500 shadow-sm"
+                            style={{ width: `${(goal.progress / goal.total) * 100}%` }}
+                          ></div>
+                        </div>
+                      </div>
                     </div>
                   )}
                   

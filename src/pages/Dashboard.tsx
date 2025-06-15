@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { MessageCircle, Phone, BookOpen, Brain, Moon, Target, Calendar, TrendingUp, User, Settings, LogOut, CreditCard, Trophy, Bookmark, Sparkles, Star, Crown } from 'lucide-react';
+import { MessageCircle, Phone, BookOpen, Brain, Moon, Target, Calendar, TrendingUp, User, Settings, LogOut, CreditCard, Trophy, Bookmark, Sparkles, Star, Crown, Zap, ArrowRight, Play } from 'lucide-react';
 import MoodTracker from '@/components/MoodTracker';
 import Achievements from '@/components/Achievements';
 import Goals from '@/components/Goals';
@@ -28,42 +28,54 @@ const Dashboard = () => {
       icon: MessageCircle,
       href: "/ai-chat",
       color: "from-blue-500 to-blue-600",
-      shadowColor: "shadow-blue-500/25"
+      shadowColor: "shadow-blue-500/25",
+      description: "24/7 text support",
+      bgColor: "bg-blue-50"
     },
     {
       title: "AI Call",
       icon: Phone,
       href: "/ai-call",
       color: "from-green-500 to-green-600",
-      shadowColor: "shadow-green-500/25"
+      shadowColor: "shadow-green-500/25",
+      description: "Voice conversations",
+      bgColor: "bg-green-50"
     },
     {
       title: "Exercises",
       icon: Target,
       href: "/exercises",
       color: "from-purple-500 to-purple-600",
-      shadowColor: "shadow-purple-500/25"
+      shadowColor: "shadow-purple-500/25",
+      description: "Guided activities",
+      bgColor: "bg-purple-50"
     },
     {
       title: "Brain Training",
       icon: Brain,
       href: "/brain-training",
       color: "from-orange-500 to-orange-600",
-      shadowColor: "shadow-orange-500/25"
+      shadowColor: "shadow-orange-500/25",
+      description: "Cognitive games",
+      bgColor: "bg-orange-50"
     },
     {
       title: "Sleep Stories",
       icon: Moon,
       href: "/sleep-stories",
       color: "from-indigo-500 to-indigo-600",
-      shadowColor: "shadow-indigo-500/25"
+      shadowColor: "shadow-indigo-500/25",
+      description: "Bedtime stories",
+      bgColor: "bg-indigo-50"
     },
     {
       title: "Audiobooks",
       icon: BookOpen,
       href: "/audiobooks",
       color: "from-red-500 to-red-600",
-      shadowColor: "shadow-red-500/25"
+      shadowColor: "shadow-red-500/25",
+      description: "Wellness library",
+      bgColor: "bg-red-50"
     }
   ];
 
@@ -118,9 +130,11 @@ const Dashboard = () => {
                       Billing
                     </Button>
                   </Link>
-                  <Button variant="outline" size="sm" className="bg-white/90 text-gray-900 border-gray-300 hover:bg-white shadow-lg hover:scale-105 transition-all duration-300">
-                    <Settings className="w-4 h-4" />
-                  </Button>
+                  <Link to="/settings">
+                    <Button variant="outline" size="sm" className="bg-white/90 text-gray-900 border-gray-300 hover:bg-white shadow-lg hover:scale-105 transition-all duration-300">
+                      <Settings className="w-4 h-4" />
+                    </Button>
+                  </Link>
                   <Button variant="destructive" size="sm" onClick={handleSignOut} className="bg-red-600 hover:bg-red-700 shadow-lg hover:scale-105 transition-all duration-300 font-semibold">
                     <LogOut className="w-4 h-4 mr-2" />
                     Sign Out
@@ -204,14 +218,38 @@ const Dashboard = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="relative z-10">
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {quickActions.map((action, index) => (
                     <Link key={index} to={action.href}>
-                      <div className="flex flex-col items-center p-6 rounded-2xl hover:bg-white/80 transition-all duration-300 backdrop-blur-sm border-2 border-white/30 hover:shadow-xl group hover:scale-105">
-                        <div className={`w-14 h-14 bg-gradient-to-br ${action.color} rounded-full flex items-center justify-center mb-3 shadow-xl ${action.shadowColor} group-hover:scale-110 transition-transform duration-300`}>
-                          <action.icon className="w-7 h-7 text-white" />
+                      <div className={`group relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl ${action.bgColor} border-2 border-white/50 hover:border-white/80 p-6`}>
+                        {/* Background gradient overlay */}
+                        <div className={`absolute inset-0 bg-gradient-to-br ${action.color} opacity-5 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                        
+                        {/* Content */}
+                        <div className="relative z-10 flex flex-col items-center text-center space-y-4">
+                          <div className={`w-16 h-16 bg-gradient-to-br ${action.color} rounded-2xl flex items-center justify-center shadow-xl ${action.shadowColor} group-hover:scale-110 transition-transform duration-300`}>
+                            <action.icon className="w-8 h-8 text-white" />
+                          </div>
+                          
+                          <div className="space-y-2">
+                            <h3 className="text-lg font-bold text-gray-900 group-hover:text-gray-800 transition-colors duration-300">
+                              {action.title}
+                            </h3>
+                            <p className="text-sm text-gray-600 font-medium">
+                              {action.description}
+                            </p>
+                          </div>
+                          
+                          <div className="flex items-center space-x-2 text-sm font-semibold text-gray-700 group-hover:text-gray-900 transition-colors duration-300">
+                            <Play className="w-4 h-4" />
+                            <span>Start Now</span>
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                          </div>
                         </div>
-                        <span className="text-sm font-bold text-center text-gray-900 drop-shadow-sm">{action.title}</span>
+                        
+                        {/* Decorative elements */}
+                        <div className={`absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br ${action.color} opacity-20 rounded-full group-hover:scale-125 transition-transform duration-300`}></div>
+                        <div className={`absolute -bottom-4 -left-4 w-8 h-8 bg-gradient-to-br ${action.color} opacity-15 rounded-full group-hover:scale-125 transition-transform duration-300`}></div>
                       </div>
                     </Link>
                   ))}

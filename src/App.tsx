@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,6 +13,7 @@ import Dashboard from "./pages/Dashboard";
 import Assessment from "./pages/Assessment";
 import AssessmentResults from "./pages/AssessmentResults";
 import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
 import Exercises from "./pages/Exercises";
 import BrainTraining from "./pages/BrainTraining";
 import Audiobooks from "./pages/Audiobooks";
@@ -43,6 +43,7 @@ const App = () => (
           <Route path="/assessment" element={<Assessment />} />
           <Route path="/assessment-results" element={<AssessmentResults />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="/exercises" element={<Exercises />} />
           <Route path="/brain-training" element={<BrainTraining />} />
           <Route path="/audiobooks" element={<Audiobooks />} />
