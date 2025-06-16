@@ -180,7 +180,14 @@ const Audiobooks = () => {
                       <p className="text-gray-700">
                         {audiobooks.find(book => book.id === currentlyPlaying)?.author}
                       </p>
-                      <Progress value={audiobooks.find(book => book.id === currentlyPlaying)?.progress || 0} className="w-64 mt-2" />
+                      <div className="relative mt-2 w-64">
+                        <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-gradient-to-r from-orange-500 to-red-600 rounded-full transition-all duration-500 shadow-md"
+                            style={{ width: `${audiobooks.find(book => book.id === currentlyPlaying)?.progress || 0}%` }}
+                          ></div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2">
@@ -240,7 +247,14 @@ const Audiobooks = () => {
                           <span className="font-medium">Progress</span>
                           <span className="font-medium">{audiobook.progress}%</span>
                         </div>
-                        <Progress value={audiobook.progress} />
+                        <div className="relative">
+                          <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
+                            <div 
+                              className="h-full bg-gradient-to-r from-orange-500 to-red-600 rounded-full transition-all duration-500 shadow-md"
+                              style={{ width: `${audiobook.progress}%` }}
+                            ></div>
+                          </div>
+                        </div>
                       </div>
                     )}
                     

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -17,6 +16,7 @@ interface SleepStory {
   rating: number;
   description: string;
   isNew?: boolean;
+  progress?: number;
 }
 
 const SleepStories = () => {
@@ -33,7 +33,8 @@ const SleepStories = () => {
       category: 'Nature',
       rating: 4.9,
       description: 'Gentle rain falling through ancient forest leaves, creating a peaceful soundscape for deep sleep.',
-      isNew: true
+      isNew: true,
+      progress: 25
     },
     {
       id: '2',
@@ -42,7 +43,8 @@ const SleepStories = () => {
       duration: '35 min',
       category: 'Adventure',
       rating: 4.8,
-      description: 'A calming tale of a lighthouse keeper and the peaceful rhythm of ocean waves.'
+      description: 'A calming tale of a lighthouse keeper and the peaceful rhythm of ocean waves.',
+      progress: 60
     },
     {
       id: '3',
@@ -51,7 +53,8 @@ const SleepStories = () => {
       duration: '30 min',
       category: 'Meditation',
       rating: 4.7,
-      description: 'A guided journey through serene mountain landscapes with gentle breathing exercises.'
+      description: 'A guided journey through serene mountain landscapes with gentle breathing exercises.',
+      progress: 0
     },
     {
       id: '4',
@@ -60,7 +63,8 @@ const SleepStories = () => {
       duration: '40 min',
       category: 'Fantasy',
       rating: 4.8,
-      description: 'Wander through a magical garden under the stars in this enchanting bedtime story.'
+      description: 'Wander through a magical garden under the stars in this enchanting bedtime story.',
+      progress: 80
     },
     {
       id: '5',
@@ -69,7 +73,8 @@ const SleepStories = () => {
       duration: '60 min',
       category: 'Nature',
       rating: 4.9,
-      description: 'The rhythmic sound of gentle ocean waves lapping against a peaceful shore.'
+      description: 'The rhythmic sound of gentle ocean waves lapping against a peaceful shore.',
+      progress: 15
     }
   ];
 
@@ -108,17 +113,17 @@ const SleepStories = () => {
           backgroundAttachment: 'fixed'
         }}
       >
-        {/* Blurred overlay */}
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+        {/* Enhanced blurred overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/50 via-purple-900/40 to-blue-900/50 backdrop-blur-md"></div>
         
         <div className="relative z-10">
-          {/* Header */}
-          <header className="bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+          {/* Header with enhanced styling */}
+          <header className="bg-white/95 backdrop-blur-lg border-b border-white/20 shadow-xl">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between h-16">
                 <div className="flex items-center space-x-4">
                   <Link to="/dashboard">
-                    <Button variant="ghost" size="sm" className="text-gray-900">
+                    <Button variant="ghost" size="sm" className="text-gray-900 hover:bg-white/80">
                       <ArrowLeft className="w-4 h-4 mr-2" />
                       Back
                     </Button>
@@ -133,7 +138,7 @@ const SleepStories = () => {
           </header>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            {/* Category Filters */}
+            {/* Category Filters with enhanced styling */}
             <div className="mb-8">
               <h2 className="text-lg font-medium text-white mb-4 drop-shadow-lg">Categories</h2>
               <div className="flex flex-wrap gap-2">
@@ -144,8 +149,8 @@ const SleepStories = () => {
                     size="sm"
                     onClick={() => setSelectedCategory(category)}
                     className={selectedCategory === category 
-                      ? "bg-green-600 hover:bg-green-700 text-white" 
-                      : "bg-white/90 text-gray-900 border-white/50 hover:bg-white"
+                      ? "bg-indigo-600 hover:bg-indigo-700 text-white shadow-md" 
+                      : "bg-white/90 text-gray-900 border-white/50 hover:bg-white shadow-md"
                     }
                   >
                     {category}
@@ -154,13 +159,13 @@ const SleepStories = () => {
               </div>
             </div>
 
-            {/* Currently Playing */}
+            {/* Currently Playing with enhanced styling */}
             {currentlyPlaying && (
-              <Card className="mb-8 bg-white/95 backdrop-blur-sm shadow-lg border-0">
+              <Card className="mb-8 bg-white/95 backdrop-blur-lg shadow-2xl border-0 ring-1 ring-white/20">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
-                      <div className="w-16 h-16 bg-indigo-600 rounded-lg flex items-center justify-center">
+                      <div className="w-16 h-16 bg-indigo-600 rounded-lg flex items-center justify-center shadow-lg">
                         <Moon className="w-8 h-8 text-white" />
                       </div>
                       <div>
@@ -170,11 +175,18 @@ const SleepStories = () => {
                         <p className="text-gray-700">
                           {sleepStories.find(story => story.id === currentlyPlaying)?.narrator}
                         </p>
-                        <Progress value={35} className="w-64 mt-2" />
+                        <div className="relative mt-2 w-64">
+                          <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
+                            <div 
+                              className="h-full bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full transition-all duration-500 shadow-md"
+                              style={{ width: `${sleepStories.find(story => story.id === currentlyPlaying)?.progress || 35}%` }}
+                            ></div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <Button onClick={() => togglePlayback(currentlyPlaying)} className="bg-green-600 hover:bg-green-700">
+                      <Button onClick={() => togglePlayback(currentlyPlaying)} className="bg-indigo-600 hover:bg-indigo-700 shadow-md">
                         {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                       </Button>
                     </div>
@@ -183,10 +195,10 @@ const SleepStories = () => {
               </Card>
             )}
 
-            {/* Sleep Stories Grid */}
+            {/* Sleep Stories Grid with enhanced styling */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredStories.map((story) => (
-                <Card key={story.id} className="bg-white/95 backdrop-blur-sm shadow-lg border-0 hover:shadow-xl transition-shadow">
+                <Card key={story.id} className="bg-white/95 backdrop-blur-lg shadow-xl hover:shadow-2xl transition-all duration-300 border-0 ring-1 ring-white/20 hover:scale-105">
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
@@ -196,7 +208,7 @@ const SleepStories = () => {
                             <Badge className="bg-green-100 text-green-800 border-green-300">New</Badge>
                           )}
                         </div>
-                        <p className="text-sm text-gray-700">Narrated by {story.narrator}</p>
+                        <p className="text-sm text-gray-700 font-medium">Narrated by {story.narrator}</p>
                         <div className="flex items-center space-x-2 mt-2">
                           <Badge variant="outline" className="border-gray-300 text-gray-700">{story.category}</Badge>
                         </div>
@@ -205,26 +217,43 @@ const SleepStories = () => {
                   </CardHeader>
                   
                   <CardContent>
-                    <p className="text-gray-700 text-sm mb-4">{story.description}</p>
+                    <p className="text-gray-700 text-sm mb-4 font-medium">{story.description}</p>
                     
                     <div className="space-y-3">
                       <div className="flex items-center justify-between text-sm">
                         <div className="flex items-center space-x-1">
                           <Clock className="w-4 h-4 text-gray-500" />
-                          <span className="text-gray-700">{story.duration}</span>
+                          <span className="text-gray-700 font-medium">{story.duration}</span>
                         </div>
                         <div className="flex items-center space-x-1">
                           {renderStars(story.rating)}
-                          <span className="text-gray-700">({story.rating})</span>
+                          <span className="text-gray-700 font-medium">({story.rating})</span>
                         </div>
                       </div>
                       
+                      {story.progress && story.progress > 0 && (
+                        <div>
+                          <div className="flex justify-between text-xs text-gray-600 mb-1">
+                            <span className="font-medium">Progress</span>
+                            <span className="font-medium">{story.progress}%</span>
+                          </div>
+                          <div className="relative">
+                            <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
+                              <div 
+                                className="h-full bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full transition-all duration-500 shadow-md"
+                                style={{ width: `${story.progress}%` }}
+                              ></div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      
                       <Button
-                        className="w-full bg-green-600 hover:bg-green-700 text-white"
+                        className="w-full bg-indigo-600 hover:bg-indigo-700 text-white shadow-md"
                         onClick={() => togglePlayback(story.id)}
                       >
                         <Play className="w-4 h-4 mr-2" />
-                        Start Listening
+                        {story.progress && story.progress > 0 ? 'Continue' : 'Start'} Listening
                       </Button>
                     </div>
                   </CardContent>

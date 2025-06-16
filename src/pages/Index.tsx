@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
@@ -12,16 +11,9 @@ import PageTransition from '@/components/PageTransition';
 
 console.log('[LOG][Index.tsx]: Index page component rendered');
 
-const DebugBanner = () => (
-  <div style={{ background: "#fde68a", color: "#78350f", fontWeight: "bold", padding: "8px", zIndex: 9999 }}>
-    [Index.tsx] Top of / page (if you see this, main page is rendering)
-  </div>
-);
-
 const Index = () => {
   return (
     <PageTransition>
-      <DebugBanner />
       <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">

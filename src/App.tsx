@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -31,48 +30,39 @@ const queryClient = new QueryClient();
 
 console.log("[LOG][App.tsx]: App component mounted");
 
-const DebugBanner = () => (
-  <div style={{ backgroundColor: "#2dd4bf", color: "#111", fontWeight: "bold", padding: "8px", zIndex: 10000 }}>
-    [App.tsx] Rendered (if you see this, app root is alive)
-  </div>
-);
-
 const App = () => (
-  <>
-    <DebugBanner />
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/learn-more" element={<LearnMore />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/assessment" element={<Assessment />} />
-            <Route path="/assessment-results" element={<AssessmentResults />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/exercises" element={<Exercises />} />
-            <Route path="/brain-training" element={<BrainTraining />} />
-            <Route path="/audiobooks" element={<Audiobooks />} />
-            <Route path="/ai-chat" element={<AIChat />} />
-            <Route path="/ai-call" element={<AICall />} />
-            <Route path="/manage-payments" element={<ManagePayments />} />
-            <Route path="/sleep-stories" element={<SleepStories />} />
-            <Route path="/programs" element={<Programs />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  </>
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/learn-more" element={<LearnMore />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/assessment" element={<Assessment />} />
+          <Route path="/assessment-results" element={<AssessmentResults />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/exercises" element={<Exercises />} />
+          <Route path="/brain-training" element={<BrainTraining />} />
+          <Route path="/audiobooks" element={<Audiobooks />} />
+          <Route path="/ai-chat" element={<AIChat />} />
+          <Route path="/ai-call" element={<AICall />} />
+          <Route path="/manage-payments" element={<ManagePayments />} />
+          <Route path="/sleep-stories" element={<SleepStories />} />
+          <Route path="/programs" element={<Programs />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
 );
 
 export default App;
